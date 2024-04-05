@@ -51,10 +51,6 @@
 
     <!-- Begin page content -->
     <main class="container-fluid h-100 main-container">
-        <div class="overlay-image text-end">
-            <img src="assets/img/orange-slice.png" class="orange-slice" alt="">
-        </div>
-
         <div class="row h-100">
             <div class="col-12 text-center">
                 <div class="logo-small">
@@ -67,31 +63,26 @@
                         <h2 class="text-center mb-4">Login</h2>
                         <div class="card card-light shadow-sm mb-4">
                             <div class="card-body">
-                                <form class=" was-validated">
+                                <form class=" was-validated" id="loginForm">
                                     <div class="form-floating mb-3">
-                                        <input type="email" class="form-control is-valid" id="emailaddress" placeholder="name@example.com"
+                                        <input type="email" class="form-control" id="emailaddress" placeholder="name@example.com"
                                             required>
-                                        <label for="emailaddress">Username / Email</label>
-                                        <button type="button" class="btn btn-link text-success tooltip-btn valid-tooltip"
-                                            data-bs-toggle="tooltip" data-bs-placement="left" title="Email is valid">
-                                            <i class="bi bi-check-circle"></i>
-                                        </button>
+                                        <label for="emailaddress">Masukan Email</label>
+                                       
                                     </div>
                                     <div class="form-floating mb-3">
-                                        <input type="password" class="form-control is-invalid" id="password"
+                                        <input type="password" class="form-control" id="password"
                                             placeholder="Your Password" >
-                                        <label for="password">Password</label>
-                                        <button type="button"  class="btn btn-link text-danger tooltip-btn invalid-tooltip"
-                                            data-bs-toggle="tooltip" data-bs-placement="left" title="Enter valid password">
-                                            <i class="bi bi-exclamation-circle"></i>
-                                        </button>
+                                        <label for="password">Masukan Password</label>
+                                        
                                     </div>
-                                </form>
+                                
 
                                 <div class="d-grid"><a href="forgotpassword.html" class="link mb-3">Lupa
                                         Password?</a></div>
 
-                                <div class="d-grid"><a href="home.html" class="btn btn-lg btn-default shadow-sm">Masuk</a></div>
+                                <div class="d-grid"> <button type="submit" class="btn btn-lg btn-default shadow-sm">Login</button></div>
+                            </form>
                             </div>
                         </div>
                        
@@ -110,7 +101,18 @@
     </main>
 
 
-
+    <div id="message" class="toast bg-primary border-0 shadow mb-3 fade hide" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-body">
+            <div class="row">
+                <div class="col text-white">
+                    <p>Message here</p>
+                </div>
+                <div class="col-auto">
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Required jquery and libraries -->
     <script src="assets/js/jquery-3.3.1.min.js"></script>
@@ -129,8 +131,6 @@
     <!-- Customized jquery file  -->
     <script src="assets/js/main.js"></script>
     <script src="assets/js/color-scheme.js"></script>
-
-    <!-- PWA app service registration and works -->
 
 </body>
 

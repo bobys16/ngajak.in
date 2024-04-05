@@ -19,6 +19,34 @@ $(window).on('load', function () {
             });
 
             break;
+        case "login":
+            $('#loginForm').submit(function (e) {
+                e.preventDefault(); // prevent default form submission
+
+                // Get form data
+                var formData = {
+                    email: $('#emailaddress').val(),
+                    password: $('#password').val()
+                };
+
+                // Send AJAX request
+                $.ajax({
+                    type: 'POST',
+                    url: 'https://api.ngajak.in/login',
+                    data: JSON.stringify(formData),
+                    contentType: 'application/json',
+                    success: function (response) {
+                        // Display success message
+                        $('#toastMessage').text(response.message);
+                        $('#message').removeClass('hide').addClass('show');
+                    },
+                    error: function (xhr, status, error) {
+                        // Display error message
+                        $('#toastMessage').text('An error occurred: ' + xhr.responseText);
+                        $('#message').removeClass('hide').addClass('show');
+                    }
+                });
+            });
 
         case "verify":
 
