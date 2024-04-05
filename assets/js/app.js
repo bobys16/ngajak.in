@@ -19,34 +19,60 @@ $(window).on('load', function () {
             });
 
             break;
-        case "login":
+        case "signin":
             $('#loginForm').submit(function (e) {
                 e.preventDefault(); // prevent default form submission
-
+            
                 // Get form data
                 var formData = {
                     email: $('#emailaddress').val(),
                     password: $('#password').val()
                 };
-
+            
                 // Send AJAX request
                 $.ajax({
                     type: 'POST',
-                    url: 'https://api.ngajak.in/login',
+                    url: 'https://api.ngajak.in/?action=login',
                     data: JSON.stringify(formData),
                     contentType: 'application/json',
+                    beforeSend: function() {
+                        // Show loader before sending the request
+                        $('.loader-wrap').fadeIn('slow');
+                    },
                     success: function (response) {
-                        // Display success message
-                        $('#toastMessage').text(response.message);
-                        $('#message').removeClass('hide').addClass('show');
+                        $('.loader-wrap').fadeOut('slow');
+                        $('#message').removeClass('bg-primary bg-danger').addClass('bg-success');
+                        var msg = JSON.parse(response);
+                        // Save response in local storage
+                        localStorage.setItem('user', JSON.stringify(msg.user));
+                        // Adjust the delay as needed
+                        $('#message .toast-body p').text(msg.message);
+                        $('#message').fadeIn();
+                        $('.toast').toast('show'); // Auto show toast
+                        setTimeout(function () {
+                            $('#message').fadeOut();
+                            // Redirect after some time
+                            window.location.href = 'home.html';
+                        }, 3000);
                     },
                     error: function (xhr, status, error) {
-                        // Display error message
-                        $('#toastMessage').text('An error occurred: ' + xhr.responseText);
-                        $('#message').removeClass('hide').addClass('show');
+                        var responseText = xhr.responseText ? JSON.parse(xhr.responseText) : null;
+                        var errorMessage = responseText ? responseText.message : 'Unknown error';
+                        $('.loader-wrap').fadeOut('slow');
+                        $('#message').removeClass('bg-primary bg-success').addClass('bg-danger');
+                        $('#message .toast-body p').text(errorMessage);
+                        $('#message').fadeIn();
+                        $('.toast').toast('show'); // Auto show toast
+                        setTimeout(function () {
+                            $('#message').fadeOut();
+                        }, 3000);
                     }
                 });
+                
+                
             });
+            
+            break;
 
         case "verify":
 

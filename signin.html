@@ -66,7 +66,7 @@
                                 <form class=" was-validated" id="loginForm">
                                     <div class="form-floating mb-3">
                                         <input type="email" class="form-control" id="emailaddress" placeholder="name@example.com"
-                                            required>
+                                            >
                                         <label for="emailaddress">Masukan Email</label>
                                        
                                     </div>
@@ -100,20 +100,21 @@
         </div>
     </main>
 
-
-    <div id="message" class="toast bg-primary border-0 shadow mb-3 fade hide" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-body">
-            <div class="row">
-                <div class="col text-white">
-                    <p>Message here</p>
-                </div>
-                <div class="col-auto">
-                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    <div class="position-fixed top-0 start-50 translate-middle-x p-3  z-index-999">
+        <div id="message" class="toast bg-primary border-0 shadow mb-3 fade hide" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
+            <div class="toast-body">
+                <div class="row">
+                    <div class="col text-white">
+                        <p>Message here</p>
+                    </div>
+                    <div class="col-auto">
+                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
+    
     <!-- Required jquery and libraries -->
     <script src="assets/js/jquery-3.3.1.min.js"></script>
     <script src="assets/js/popper.min.js"></script>
