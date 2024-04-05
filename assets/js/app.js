@@ -8,7 +8,7 @@ $(window).on('load', function () {
         case "index":
             setTimeout(function () {
                 window.location.replace("landing.html");
-            }, 350000)
+            }, 3500)
             break;
 
         case "landing":
