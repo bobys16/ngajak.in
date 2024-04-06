@@ -6,9 +6,16 @@ $(window).on('load', function () {
 
     switch (body.attr('data-page')) {
         case "index":
-            setTimeout(function () {
-                window.location.replace("landing.html");
-            }, 3500)
+            var user = JSON.parse(localStorage.getItem('user'));
+            if (user) {
+                setTimeout(function () {
+                    window.location.replace("home.html");
+                }, 3500);
+            } else {
+                setTimeout(function () {
+                    window.location.replace("landing.html");
+                }, 3500);
+            }
             break;
 
         case "landing":
@@ -20,6 +27,13 @@ $(window).on('load', function () {
 
             break;
         case "signin":
+            var user = JSON.parse(localStorage.getItem('user'));
+            if (user) {
+                setTimeout(function () {
+                    window.location.replace("home.html");
+                }, 3500);
+            }
+            break;
             $('#loginForm').submit(function (e) {
                 e.preventDefault(); // prevent default form submission
             
